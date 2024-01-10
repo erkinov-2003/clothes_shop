@@ -8,4 +8,6 @@ class AppColors {
   static const blackColor = Colors.black;
   static const onboardingCardColor = Color(0xFF212322);
   static const greyColor = Color(0xFFa2a2a6);
+  static const greenColor = Colors.green;
+  static const yellowColor = Colors.yellow;
 }

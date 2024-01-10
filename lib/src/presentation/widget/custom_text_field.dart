@@ -8,14 +8,17 @@ class CustomTextField extends StatelessWidget {
     required this.text,
     this.suffixIcon,
     this.isCollapsed,
+    required this.controller,
   });
   final String hintText;
   final String text;
   final Widget? suffixIcon;
   final bool? isCollapsed;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,8 +31,10 @@ class CustomTextField extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: size.height * 0.023),
         TextField(
+          controller: controller,
+          style: const TextStyle(color: AppColors.whiteColor),
           decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,

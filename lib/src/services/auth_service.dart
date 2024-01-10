@@ -29,6 +29,10 @@ class AuthService {
     }
   }
 
+  Stream<void> authGateStream() {
+    return _authService.authStateChanges();
+  }
+
   Future<void> logOutFirebase() async {
     await _authService.signOut();
   }

@@ -1,11 +1,8 @@
 import 'package:clotheses_shop/src/controller/main_controller.dart';
-import 'package:clotheses_shop/src/presentation/screens/home/onboarding_screen.dart';
-import 'package:clotheses_shop/src/presentation/screens/register/sign_in_screen.dart';
-import 'package:clotheses_shop/src/presentation/screens/register/sign_up_screen.dart';
+import 'package:clotheses_shop/src/presentation/page_builder/page_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../src/presentation/screens/home/home_screen.dart';
 
 class MyApplication extends StatelessWidget {
   const MyApplication({super.key});
@@ -19,7 +16,7 @@ class MyApplication extends StatelessWidget {
           theme: ThemeData(useMaterial3: false),
           title: "Clotheses app",
           debugShowCheckedModeBanner: false,
-          home: OnboardingScreen(),
+          home: PageBuilder()
         );
       },
     );

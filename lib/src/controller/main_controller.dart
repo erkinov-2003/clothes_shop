@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class MainController extends ChangeNotifier {
   int index = 0;
   void onboardingButton(int value) {
@@ -7,7 +8,15 @@ class MainController extends ChangeNotifier {
     notifyListeners();
   }
 
+
   bool switchBool = true;
+
+  int currentIndex = 0;
+
+  void currentIndexFunction(int value){
+    currentIndex = value;
+    notifyListeners();
+  }
 
   void switchPagesButton() {
     switchBool = !switchBool;
