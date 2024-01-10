@@ -16,9 +16,10 @@ class CounterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: 25,
-      width: 80,
+      height: size.height * 0.028,
+      width: size.width * 0.216,
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.whiteColor, width: 0.3),

@@ -7,6 +7,7 @@ class CustomHomeCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     List<String> imagesList = [
       AppImages.bannerImg,
       AppImages.bannerImg2,
@@ -18,7 +19,7 @@ class CustomHomeCarousel extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            height: 200,
+            height: size.height * 0.224,
             width: double.infinity,
             child: DecoratedBox(
               decoration: BoxDecoration(

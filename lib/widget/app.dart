@@ -16,7 +16,7 @@ class MyApplication extends StatelessWidget {
           theme: ThemeData(useMaterial3: false),
           title: "Clotheses app",
           debugShowCheckedModeBanner: false,
-          home: const OnboardingScreen()
+          home: const OnboardingScreen(),
         );
       },
     );

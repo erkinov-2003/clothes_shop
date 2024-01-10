@@ -1,3 +1,4 @@
+import 'package:clotheses_shop/src/core/validator/sign_in_validor.dart';
 import 'package:clotheses_shop/src/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,8 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
+  final global = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -58,67 +61,79 @@ class _SignInScreenState extends State<SignInScreen> {
           padding: const EdgeInsets.only(left: 15, right: 15, top: 30),
           child: SingleChildScrollView(
             physics: const NeverScrollableScrollPhysics(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(
-                  AppIcons.logoIcon,
-                  height: 40,
-                ),
-                SizedBox(height: size.height * 0.033),
-                Text(
-                  "Login",
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        color: AppColors.whiteColor,
-                        fontFamily: "Jakarta",
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                SizedBox(height: size.height * 0.023),
-                Row(
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                            color: AppColors.greyColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "Jakarta",
-                          ),
-                    ),
-                    const SizedBox(width: 5),
-                    TextButton(
-                      onPressed: widget.switchFunction,
-                      child: Text(
-                        "Signup",
+            child: Form(
+              key: global,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    AppIcons.logoIcon,
+                    height: 40,
+                  ),
+                  SizedBox(height: size.height * 0.033),
+                  Text(
+                    "Login",
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          color: AppColors.whiteColor,
+                          fontFamily: "Jakarta",
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  SizedBox(height: size.height * 0.023),
+                  Row(
+                    children: [
+                      Text(
+                        "Don't have an account? ",
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  color: AppColors.bottomColor,
-                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.greyColor,
+                                  fontWeight: FontWeight.w500,
                                   fontFamily: "Jakarta",
                                 ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: size.height * 0.053),
-                CustomTextField(
-                  hintText: "Enter your email",
-                  text: "Email",
-                  controller: emailController,
-                ),
-                SizedBox(height: size.height * 0.023),
-                CustomTextField(
-                  hintText: "Enter your password",
-                  text: "Password",
-                  controller: passwordController,
-                ),
-                SizedBox(height: size.height * 0.043),
-                CustomBottom(
-                  bottomText: "Login",
-                  onPressed: signInFirebaseButton,
-                )
-              ],
+                      const SizedBox(width: 5),
+                      TextButton(
+                        onPressed: widget.switchFunction,
+                        child: Text(
+                          "Signup",
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    color: AppColors.bottomColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: "Jakarta",
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: size.height * 0.053),
+                  CustomTextField(
+                    hintText: "Enter your email",
+                    text: "Email",
+                    controller: emailController,
+                    validator: (value) =>
+                        SignInValidator.emailValidation(value!),
+                  ),
+                  SizedBox(height: size.height * 0.023),
+                  CustomTextField(
+                    hintText: "Enter your password",
+                    text: "Password",
+                    controller: passwordController,
+                    validator: (value) =>
+                        SignInValidator.passwrodValidation(value!),
+                  ),
+                  SizedBox(height: size.height * 0.043),
+                  CustomBottom(
+                    bottomText: "Login",
+                    onPressed: () {
+                      if (global.currentState!.validate()) {
+                        signInFirebaseButton();
+                      }
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),

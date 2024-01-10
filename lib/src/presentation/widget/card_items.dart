@@ -20,6 +20,7 @@ class CustomCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final mainController = Provider.of<MainController>(context);
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
@@ -28,8 +29,8 @@ class CustomCardItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 100,
-            width: 100,
+            height: size.height * 0.112,
+            width: size.width * 0.255,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -42,7 +43,7 @@ class CustomCardItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: size.width * 0.030),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -59,7 +60,7 @@ class CustomCardItem extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: size.height * 0.011),
                 Text(
                   price,
                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -83,6 +84,7 @@ class CustomCardItem extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           mainController.deleteCardList(index);
+                          mainController.clearTotalPrice();
                         },
                         child: const Icon(
                           Icons.clear,

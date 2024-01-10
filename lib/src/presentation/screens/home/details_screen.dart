@@ -172,7 +172,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 ),
                           ),
                           SizedBox(height: size.height * 0.023),
-                          const CounterCard(counterText: "1"),
+                          CounterCard(
+                            counterText: mainController.count.toString(),
+                            addPressed: () => mainController.incrementCounter(),
+                            minusPressed: () =>
+                                mainController.decrementCounter(),
+                          ),
                           SizedBox(height: size.height * 0.056),
                           DetailsButton(
                             outlineFunction: () => {},
@@ -182,7 +187,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 price: widget.price,
                                 images: widget.images,
                               );
-                              mainController.saveCartList(model);
+                              mainController.saveAllCounterData(
+                                model,
+                                mainController.count,
+                              );
+                              mainController.productTotalPrice();
+                              mainController.count = 0;
                               Navigator.pop(context);
                             }),
                           ),

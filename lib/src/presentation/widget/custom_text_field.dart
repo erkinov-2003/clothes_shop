@@ -8,13 +8,14 @@ class CustomTextField extends StatelessWidget {
     required this.text,
     this.suffixIcon,
     this.isCollapsed,
-    required this.controller,
+    required this.controller, this.validator,
   });
   final String hintText;
   final String text;
   final Widget? suffixIcon;
   final bool? isCollapsed;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,8 @@ class CustomTextField extends StatelessWidget {
               ),
         ),
         SizedBox(height: size.height * 0.023),
-        TextField(
+        TextFormField(
+          validator: validator,
           controller: controller,
           style: const TextStyle(color: AppColors.whiteColor),
           decoration: InputDecoration(

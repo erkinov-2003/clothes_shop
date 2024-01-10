@@ -23,8 +23,8 @@ class CustomHomeItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 220,
-          width: 200,
+          height: size.height * 0.246,
+          width: size.width * 0.510,
           child: DecoratedBox(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -58,7 +58,7 @@ class CustomHomeItem extends StatelessWidget {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: size.height * 0.012),
         Text(
           price,
           style: Theme.of(context).textTheme.titleMedium!.copyWith(

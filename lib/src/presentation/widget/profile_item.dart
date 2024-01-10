@@ -14,6 +14,7 @@ class CustomProfileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         ListTile(
@@ -34,7 +35,7 @@ class CustomProfileItem extends StatelessWidget {
             color: AppColors.greyColor,
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: size.height * 0.012),
         const Divider(height: 0.3, color: AppColors.whiteColor),
       ],
     );

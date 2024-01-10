@@ -15,6 +15,7 @@ class IsEmptyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +35,7 @@ class IsEmptyList extends StatelessWidget {
                   fontFamily: "Jakarta",
                 ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: size.height * 0.023),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Text(

@@ -82,7 +82,7 @@ class CardScreen extends StatelessWidget {
                                 ),
                           ),
                           Text(
-                            "\$ 27.25",
+                            "\$${mainController.totalPrice}",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium!

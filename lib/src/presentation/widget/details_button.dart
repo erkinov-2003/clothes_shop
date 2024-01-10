@@ -13,13 +13,14 @@ class DetailsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         OutlinedButton(
           style: OutlinedButton.styleFrom(
             side: const BorderSide(color: Colors.white, width: 0.2),
-            fixedSize: const Size(160, 60),
+            fixedSize: Size(size.width * 0.408, size.height * 0.067),
             backgroundColor: AppColors.blackColor,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
@@ -40,7 +41,7 @@ class DetailsButton extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.bottomColor,
-            fixedSize: const Size(160, 60),
+            fixedSize: Size(size.width * 0.408, size.height * 0.067),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(15),

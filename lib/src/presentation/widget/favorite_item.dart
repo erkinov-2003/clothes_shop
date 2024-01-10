@@ -1,6 +1,5 @@
 import 'package:clotheses_shop/src/controller/main_controller.dart';
 import 'package:clotheses_shop/src/core/constants/app_colors.dart';
-import 'package:clotheses_shop/src/presentation/widget/counter_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -73,13 +72,9 @@ class FavoriteItems extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 15),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(top: 16),
-                          child: CounterCard(counterText: "1"),
-                        ),
                         GestureDetector(
                           onTap: (){
                             mainController.deleteFavoriteList(index);
