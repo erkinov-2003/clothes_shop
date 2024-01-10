@@ -39,8 +39,8 @@ class _SignInScreenState extends State<SignInScreen> {
     final service = AuthService();
     try {
       await service.signInFirebase(
-        emailController.text,
-        passwordController.text,
+        emailController.text.trim(),
+        passwordController.text.trim(),
       );
     } catch (e) {
       throw Exception("Error firebase login buttons");

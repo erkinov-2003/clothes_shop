@@ -41,8 +41,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final service = AuthService();
     try {
       await service.signUpFirebase(
-        emailController.text,
-        passwordController.text,
+        emailController.text.trim(),
+        passwordController.text.trim(),
       );
     } catch (e) {
       throw Exception("Error firebase sign up buttons");

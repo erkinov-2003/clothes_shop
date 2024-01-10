@@ -1,7 +1,7 @@
 import 'package:clotheses_shop/src/controller/main_controller.dart';
 import 'package:clotheses_shop/src/core/constants/app_colors.dart';
 import 'package:clotheses_shop/src/core/constants/app_images.dart';
-import 'package:clotheses_shop/src/presentation/screens/register/switch_page.dart';
+import 'package:clotheses_shop/src/presentation/screens/register/auth_gete.dart';
 import 'package:clotheses_shop/src/presentation/widget/custom_botton.dart';
 import 'package:clotheses_shop/src/presentation/widget/onboarding_item.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     bottomText: "Get Started",
                     onPressed: () => mainController.navigationPages(
                       context,
-                      const SwitchPages(),
+                      const AuthGate(),
                     ),
                   )
                 : CustomBottom(

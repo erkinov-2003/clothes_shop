@@ -1,5 +1,5 @@
 import 'package:clotheses_shop/src/controller/main_controller.dart';
-import 'package:clotheses_shop/src/presentation/page_builder/page_builder.dart';
+import 'package:clotheses_shop/src/presentation/screens/home/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class MyApplication extends StatelessWidget {
           theme: ThemeData(useMaterial3: false),
           title: "Clotheses app",
           debugShowCheckedModeBanner: false,
-          home: PageBuilder()
+          home: const OnboardingScreen()
         );
       },
     );

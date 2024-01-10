@@ -16,44 +16,26 @@ class CustomProfileItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 15, top: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Image(
-                    image: AssetImage(images),
-                    height: 24,
-                    color: AppColors.greyColor,
-                  ),
-                  const SizedBox(width: 25),
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: AppColors.greyColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  )
-                ],
-              ),
-              IconButton(
-                onPressed: onPressed,
-                icon: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: AppColors.whiteColor,
-                  size: 24,
+        ListTile(
+          onTap: onPressed,
+          leading: Image(
+            image: AssetImage(images),
+            height: 24,
+          ),
+          title: Text(
+            title,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: AppColors.greenColor,
                 ),
-              ),
-            ],
+          ),
+          trailing: const Icon(
+            Icons.arrow_forward_ios_outlined,
+            size: 20,
+            color: AppColors.greyColor,
           ),
         ),
         const SizedBox(height: 10),
-        const Divider(
-          height: 0.3,
-          color: AppColors.whiteColor,
-        ),
+        const Divider(height: 0.3, color: AppColors.whiteColor),
       ],
     );
   }

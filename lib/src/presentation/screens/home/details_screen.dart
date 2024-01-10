@@ -1,9 +1,15 @@
+import 'package:clotheses_shop/src/controller/main_controller.dart';
 import 'package:clotheses_shop/src/core/constants/app_colors.dart';
 import 'package:clotheses_shop/src/core/constants/app_icons.dart';
+import 'package:clotheses_shop/src/data/model/card_model.dart';
+import 'package:clotheses_shop/src/data/model/favorite_model.dart';
+import 'package:clotheses_shop/src/presentation/dialog/card_dialog.dart';
+import 'package:clotheses_shop/src/presentation/dialog/favorite_dialog.dart';
 import 'package:clotheses_shop/src/presentation/widget/counter_cart.dart';
 import 'package:clotheses_shop/src/presentation/widget/details_button.dart';
 import 'package:clotheses_shop/src/presentation/widget/status_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({
@@ -24,16 +30,19 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   double ratingNumber = 0;
+  bool isLaked = true;
 
   @override
   Widget build(BuildContext context) {
+    final mainController = Provider.of<MainController>(context);
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.blackColor,
       body: SafeArea(
         child: Stack(
           children: [
             SizedBox(
-              height: 350,
+              height: size.height * 0.392,
               width: double.infinity,
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -54,31 +63,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             onPressed: () => Navigator.pop(context),
                             icon: const Image(
                               image: AssetImage(AppIcons.arrowLeft),
-                              height: 30,
+                              height: 35,
                               color: AppColors.blackColor,
                             ),
                           ),
-                          GestureDetector(
-                            child: SizedBox(
-                              height: 30,
-                              width: 40,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.black,
-                                  border: Border.all(
-                                    color: AppColors.whiteColor,
-                                    width: 0.4,
-                                  ),
-                                ),
-                                child: const Center(
-                                  child: Image(
-                                    image: AssetImage(AppIcons.favoriteIcon),
-                                    height: 20,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              ),
+                          IconButton(
+                            onPressed: () => addFavoriteDialog(context, () {
+                              final model = FavoriteModel(
+                                title: widget.title,
+                                price: widget.price,
+                                images: widget.images,
+                              );
+                              mainController.saveFavoriteList(model);
+                              Navigator.pop(context);
+                            }),
+                            icon: const Icon(
+                              Icons.favorite_border,
+                              size: 30,
+                              color: Colors.red,
                             ),
                           ),
                         ],
@@ -91,7 +93,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: SizedBox(
-                height: 480,
+                height: size.height * 0.540,
                 width: double.infinity,
                 child: DecoratedBox(
                   decoration: const BoxDecoration(
@@ -144,7 +146,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 25),
+                          SizedBox(height: size.height * 0.035),
                           Text(
                             widget.description,
                             style: Theme.of(context)
@@ -156,9 +158,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: size.height * 0.013),
                           const CustomStatusBar(),
-                          const SizedBox(height: 20),
+                          SizedBox(height: size.height * 0.023),
                           Text(
                             "Quanity",
                             style: Theme.of(context)
@@ -169,14 +171,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   fontFamily: "Jakarta",
                                 ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: size.height * 0.023),
                           const CounterCard(counterText: "1"),
-                          const SizedBox(height: 50),
+                          SizedBox(height: size.height * 0.056),
                           DetailsButton(
                             outlineFunction: () => {},
-                            elevatedFunction: () => {},
+                            elevatedFunction: () => addCardDialog(context, () {
+                              final model = CardModel(
+                                title: widget.title,
+                                price: widget.price,
+                                images: widget.images,
+                              );
+                              mainController.saveCartList(model);
+                              Navigator.pop(context);
+                            }),
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: size.height * 0.033),
                         ],
                       ),
                     ),

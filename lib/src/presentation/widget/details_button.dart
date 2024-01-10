@@ -27,7 +27,7 @@ class DetailsButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: outlineFunction,
           child: Text(
             "Buy Now",
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -47,7 +47,7 @@ class DetailsButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: elevatedFunction,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

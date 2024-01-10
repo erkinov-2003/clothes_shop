@@ -3,6 +3,7 @@ import 'package:clotheses_shop/src/core/constants/app_colors.dart';
 import 'package:clotheses_shop/src/core/constants/app_icons.dart';
 import 'package:clotheses_shop/src/presentation/screens/home/all_product_screen.dart';
 import 'package:clotheses_shop/src/presentation/screens/home/details_screen.dart';
+import 'package:clotheses_shop/src/presentation/screens/home/search_screen.dart';
 import 'package:clotheses_shop/src/presentation/widget/home_cart_item.dart';
 import 'package:clotheses_shop/src/presentation/widget/home_corousel.dart';
 import 'package:clotheses_shop/src/services/api_service.dart';
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.blackColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: AppColors.blackColor,
         title: Image.asset(AppIcons.logoIcon, height: 30),
@@ -53,7 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () => mainController.navigationPages(
+                context,
+                const SearchScreen(),
+              ),
               icon: const Image(
                 image: AssetImage(AppIcons.searchIcon),
                 height: 25,

@@ -62,24 +62,46 @@ class _PageBuilderState extends State<PageBuilder> {
           ),
           BottomNavigationBarItem(
             backgroundColor: AppColors.blackColor,
-            icon: Image(
-              image: const AssetImage(AppIcons.shopIcon),
-              height: 24,
-              color: mainController.currentIndex == 1
-                  ? Colors.red
-                  : AppColors.whiteColor,
-            ),
+            icon: mainController.getCardList.isEmpty
+                ? Image(
+                    image: const AssetImage(AppIcons.shopIcon),
+                    height: 24,
+                    color: mainController.currentIndex == 1
+                        ? Colors.red
+                        : AppColors.whiteColor,
+                  )
+                : Badge(
+                    label: Text("${mainController.getCardList.length}"),
+                    child: Image(
+                      image: const AssetImage(AppIcons.shopIcon),
+                      height: 24,
+                      color: mainController.currentIndex == 1
+                          ? Colors.red
+                          : AppColors.whiteColor,
+                    ),
+                  ),
             label: "My Cart",
           ),
           BottomNavigationBarItem(
             backgroundColor: AppColors.blackColor,
-            icon: Image(
-              image: const AssetImage(AppIcons.favoriteIcon),
-              height: 24,
-              color: mainController.currentIndex == 2
-                  ? Colors.red
-                  : AppColors.whiteColor,
-            ),
+            icon: mainController.getFavoriteList.isEmpty
+                ? Image(
+                    image: const AssetImage(AppIcons.favoriteIcon),
+                    height: 24,
+                    color: mainController.currentIndex == 2
+                        ? Colors.red
+                        : AppColors.whiteColor,
+                  )
+                : Badge(
+                    label: Text("${mainController.getFavoriteList.length}"),
+                    child: Image(
+                      image: const AssetImage(AppIcons.favoriteIcon),
+                      height: 24,
+                      color: mainController.currentIndex == 2
+                          ? Colors.red
+                          : AppColors.whiteColor,
+                    ),
+                  ),
             label: "Favorite",
           ),
           BottomNavigationBarItem(
@@ -101,7 +123,7 @@ class _PageBuilderState extends State<PageBuilder> {
         onPageChanged: (value) => mainController.currentIndexFunction(value),
         children: const [
           HomeScreen(),
-          CardScreen(),
+          CardScreen(title: "", price: ""),
           FavoriteScreen(),
           ProfileScreen()
         ],
